@@ -1,0 +1,16 @@
+
+Number of messages collected
+620
+
+Number of instances per class found:
+Class-0 Count (negative sentimates): 140
+Class-2 count (neutral sentimates): 329
+Class-4 count (positive sentimates): 151
+
+One example from each class:
+
+Class-0 Example (negative sentimates): Charlotte police officer won’t be charged in killing of black man that led to violent protests https://t.co/qlOTsxehGj
+
+Class-2 Example (neutral sentimates): Line up for one of the 2 BMW GTLM cars for Daytona? https://t.co/LvJu53gBga
+
+Class-4 Example (positive sentimates): @BritishGT @samtordoff @BarwellMotorSpt @LamborghiniSC wow good luck from the BMW to a lambo 👍 he definitely got the skills to race 😀

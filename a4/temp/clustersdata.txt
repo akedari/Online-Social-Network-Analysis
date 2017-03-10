@@ -1,0 +1,8 @@
+Number of users collected:
+400
+
+Number of communities discovered:
+4
+
+Average number of users per community:
+100.0

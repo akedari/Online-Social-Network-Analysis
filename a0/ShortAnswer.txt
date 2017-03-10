@@ -1,0 +1,134 @@
+Enter your responses inline below and push this file to your private GitHub
+repository.
+
+
+1. Assume I plan to use the friend_overlap function above to quantify the
+similarity of two users. E.g., because 344 is larger than 1, I conclude that
+Jill Stein and Gary Johnson are more similar than Hillary Clinton and Donald
+Trump.
+
+How is this approach misleading? How might you fix it?
+
+Answer -
+    friend_overlap function has been used to get the number of same accounts
+    followed by the two users. for example 'DrJillStein', 'GovGaryJohnson' follows 344
+    common accounts.
+    So before conclude thet "Jill Stein and Gary Johnson are more similar than Hillary
+    Clinton and Donald Trump" we need to look into the data we have for analysis.
+
+    'DrJillStein', 'GovGaryJohnson' follows 344 mutual accounts
+    'HillaryClinton', 'realDonaldTrump', follows 1 mutual accounts
+
+    From this data we can not conclude that Jill Stein and Gary Johnson are more similar,
+    because we have not considered the actual Data set for all these 4 users.
+    Below is information we need for analysis.
+
+    User            Number of friends
+    DrJillStein     4136
+    GovGaryJohnson  3052
+    HillaryClinton  745
+    realDonaldTrump 42
+
+    Here if we looked in to the actual data set we can see that DrJillStein and GovGaryJohnson
+    follows 4136 and 3052 account respectively, so their are highly chances of getting more
+    accounts overlap. Whereas HillaryClinton and realDonaldTrump follows 745 and 42 accounts
+    only, so they can't have more that 42 account overlapped between them. So we can't conclude
+    that Jill Stein and Gary Johnson are more similar than Hillary Clinton and Donald Trump.
+    This approch is misleading because of this given information is not useful for comparison of
+    how two objects are similar.
+
+    Fix to the problem -
+    To conclude that we either need to take each overlapping account details into consideration.
+    Like the type of people they are following then and then only we conclude how much they are similar.
+    If two people follows less number of people but they follow exactly identical people then they are more similar.
+    Or we can use the Cosine Similarity or Jaccard Similarity to get similarity between 2 non-empty set
+    "Cosine similarity is a measure of similarity between two non zero vectors of an inner product space
+    that measures the cosine of the angle between them. The cosine of 0° is 1, and it is less than 1 for
+    any other angle."
+
+2. Looking at the output of your followed_by_hillary_and_donald function, why
+do you think this user is followed by both Hilary Clinton and Donald Trump,
+who are rivals? Do some web searches to see if you can find out more
+information.
+Answer -
+    Johnson  and Hilary Clinton are political and business friends of each other and as Johnson is
+    major celebrity Hilary follows  Magic Johnson. Johnson is loyal towards Democrat who supported
+    Hillary in her first run for the Presidency back in 2007 and now with Clinton announcing that
+    she's stands for President again, Magic's making it clear he is still supporting Hilary.
+    Then great Magic Johnson, had rumored to replace Trump as the  new face of the Celebrity Apprentice
+    television franchise.
+    But regardless of all this information, I don't think their is any political reason for which they both
+    follows the Magic Johnson. Magic is famous basketball player and anyone can follow him as sports person
+    as well as he is successful business man so other people from that domain can also follow him. We can not
+    tell why Donald and HIlary follows the Magic Johnson.
+
+3. There is a big difference in how many accounts each candidate follows (Gary
+Johnson follows over 3K accounts, while Donald Trump follows less than
+50). Why do you think this is? How might that affect our analysis?
+Answer-
+    Why do you think this is -
+        Gary Johnson follows over 3K accounts while Donald Trump follows less than
+        50. I don't think this values anything. Gary Johnson might feel he is more social person
+        , and trump might not feel the same. It is upto individual to follow number of people.
+        Their could be reason like Donald has large number of follower but Gary has less number of follower
+        so he is looking forward to connect more people to create market place and understand influence.
+    How might that affect our analysis -
+        As mentioned in 1st answer because of this huge difference of friends for each user, we actually can't
+        analyse and or compare these users. same example from question 1.
+        'DrJillStein', 'GovGaryJohnson' follows 344 mutual accounts
+        'HillaryClinton', 'realDonaldTrump', follows 1 mutual accounts
+        If we start analyse it by just looking at figures it makes impression that DrJillStein, GovGaryJohnson are
+        more similar than Donald and HillaryClinton which is actually not true.
+        Above that if we have to run the analysis to find the similarity between any two users it is not possible
+        because the data set is not in the way we can use that for that analysis, we will need each user information.
+        This way the Gary Johnson follows over 3K accounts, while Donald Trump follows less than 50 affects our analysis.
+
+
+4. The follower graph we've collected is incomplete. To expand it, we would
+have to also collect the list of accounts followed by each of the
+friends. That is, for each user X that Donald Trump follows, we would have to
+also collect all the users that X follows. Assuming we again use the API call
+https://dev.twitter.com/rest/reference/get/friends/ids, how many requests will
+we have to make? Given how Twitter does rate limiting
+(https://dev.twitter.com/rest/public/rate-limiting), approximately how many
+minutes will it take to collect this data?
+
+Answer-
+    Initially we have only 4 users so we did 4 API call to https://dev.twitter.com/rest/reference/get/friends/ids
+    But as we have to get their friends information (like all the users that friend follows) we need to call
+    same API for every friend.
+    So we calculate total number of friends each candidate has
+    DrJillStein 4159
+    GovGaryJohnson 3124
+    HillaryClinton 748
+    realDonaldTrump 42
+
+    Total number of friends are = 4159 + 3124 + 748 + 42 = 8071
+    So total number of API call will be (4 + 8070) = 8077
+
+    So, here we have 8077 users to call API for, so total number of call will be 8077/.
+    Twitter does rate limiting, so we can have 15 API call only after that we have to wait for 15 min before we call same API
+
+    Time required to get details for all these users is
+
+    4160/15 = 277.3333333333333 Calls with 15 request per call, each call will have 15 min waiting time
+    278*15=4170 min waiting time for DrJillStein
+
+    3125/15 = 208.3333333333333 Calls with 15 request per call, each call will have 15 min waiting time
+    209*15=3135 min waiting time for GovGaryJohnson
+
+    749/15 = 50 Calls with 15 request per call, each call will have 15 min waiting time
+    50*15=750 min waiting time for HillaryClinton
+
+    43/15 = 3 Calls with 15 request per call, each call will have 15 min waiting time
+    3*15=45 min waiting time for realDonaldTrump
+
+    so total time required for all users together is
+    = 4170 + 3135 + 750 + 45
+    = 8100 min - 15 min (this 15 min waiting time for 1st batch)
+    = 8085 min
+
+    "Here we have not considered the common friends (overlap friends) between 4 candidate as well overlapped friends
+    of those followers. if we consider so we can reduce number of call by removing duplicate calls."
+
+    "Also we have considered batch process per user, so it will be sequential for each user"

@@ -1,0 +1,41 @@
+This assignment was on open-ended exploration of online social networking, so I choosed Twitter's data for analysis.
+There are 4 parts of this assignment as explained below.
+
+collect.py -
+In this part I have collected the data (Tweets and Users) related BMW. All the users who have tweeted and mentioned BMW in their tweet(s)
+  This method is based on REST API call. REST API allows to send 15 request per 15 minutes, so we have limit on collecting data.
+  I have collected sample 500 tweets and 500 Users information Purpose of this part is to provide the data to all subsequent phases for
+  clustering and classification.
+
+cluster.py -
+In this part of assignment, I worked  data collected in the collect-phase and created a communities. To detect communities I have used
+ detection algorithm (girvan_newman). This approch works on the betweeness of the edge. In the process of detecting communities (or clustring)
+ I created a network of Users based on Jaccard Similarity. To calculate the similarity I have taken mutual followers (friends) into
+ consideration. Then used girvan_newman algorithm on that network to form the communities. I have removed the outliers in the network by calling
+ subgraph method with min degree.
+
+classify.py -
+In this part of assignment, I have classified the users tweets on sentiment analysis. In simple words I have classified the users tweet related
+ BMW into 3 classes Positive (class-4), Neutral (class-2) and Negative (class-0). In the process of classification I have tokenized the tweets
+ data based on the AFINN lexicon. To fit the model I have used KFold methods of cross validation. In KFold we iterate over and over again  on same
+ training data by splitting it into training and test data. This is to avoid over fitting problem of model and to get good result on real time data
+ or unseen data. Then I have calculated accuracy for result and used best features to train my model.
+
+summarize.py -
+This is just to generate the statistical data of our analysis. I have generated statistical records like
+  - Number of users collected:
+  - Number of messages collected:
+  - Number of communities discovered:
+  - Average number of users per community:
+  - Number of instances per class found:
+  - One example from each class:
+  and then saved them in txt format for further reference.
+
+conclusion -
+- In the these different phases of analysis I come to know like we need to collect the relevant data, and this is most important phase of our analysis.
+  If we get wrong data our whole analysis can go wrong. So this is very important phase. also I faced many different challenges like collecting
+  data for not very famous attributes cause very less data and time as well. so we need to very wise on data collection. This is most time consuming phase.
+- In clustering phase similarity calculation gives better result and good formation of cluster/communities.
+- We need to remove the outlier in this phase so it wont make any problem in next subsequent pahses of of classification
+- In classify phase we have to train our model based on the available train data. We have to take care of model over fitting.
+
